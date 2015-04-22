@@ -1,0 +1,188 @@
+<!doctype html>
+
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+    
+    <meta charset="utf=8"/>
+    <!--Angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
+    <!--jQuery-->
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    <!--favicon code-->
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='velim.css') }}"/>-->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='velim.css') }}" me2dia="screen">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<!--    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">  -->
+    <title>Avevhox</title>
+
+
+    
+</head>
+
+<body ng-app='ModalDemo'>
+
+    <!--Header:-->
+    <div>
+        <h1>
+          <a href="#" onclick="goBack()"><img src="static/trial3black.png" style="height: 110px;"/></a>
+              <script type="text/javascript">
+                  function goBack()
+                    {
+                    window.history.back()
+                    }
+              </script>
+          <nav style="float: right;">
+              <!--Contact-->
+              <a class="mail" href="mailto:avevhox@gmail.com" target="_blank"><img title="Contact Us" src="static/atsign3.png" class="contact_icon"/></a>                   
+              
+              <!--Mailing list-->
+              <a ng-controller='MyCtrl' href="#MailingList">
+                  <button ng-click='toggleModal()' >
+                      <img title="Join our mailing list!" src="static/mailinglist.png" class="mailinglist_icon"/>
+                  </button>
+                  <modal-dialog show='modalShown' width='500px' height='60%'>
+                      <p>Join our mailing list to receive the latest news from Avevhox, including updates and product releases!</p>                      
+                      <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+                         <fieldset>
+                              <label for="name">Name:</label>
+                              <input type="text" size=30 name="name" id="name" class="text ui-widget-content ui-corner-all"></br></br></br>
+                              
+                              <label for="email">Email:</label>
+                              <input type="text" size=30 name="email" id="email" value="" class="text ui-widget-content ui-corner-all"></br></br></br>
+                         </fieldset>
+                         <div class="center">  
+                         <input type="submit" class="flatbtn-blu" value="Send">&nbsp
+                         <input type="reset" class="flatbtn-blu" value="Clear">
+                         </div>
+                    </form>
+                  </modal-dialog>
+              </a>
+              
+    
+              <!--About-->
+              <a ng-controller='MyCtrl' href="#About">
+                <button ng-click='toggleModal()' >
+                  <img title="About Avevhox" src="static/question.png" class="about_icon"/>
+                </button>
+                    <modal-dialog show='modalShown' width='500px' height='60%'>
+                      <p style="font-size: x-large; margin-top: 0px; margin-top: 0px;">About Avevhox:<p></br>
+                      <p style="font-size: small;">Want the sounds of the city without the hum of human voices?  Perhaps you'd like to
+                      turn one of your favorite songs into an instrumental track?  </p>
+                      <p style="font-size: small;"></br>Avevhox is a voice elimination application that lets
+                      you import .wav files and export them back out without the sound of the human voice.  A project still in the making,
+                      Avevhox uses Hidden Markov Models to localize and erase human voices.</p>
+                      <p style="font-size: small;"></br>"Avevhox" is a portmanteau of the Latin words for "voice" and "elimination"</p>
+                      <p></br>Made with Python, Flask, and Angular.JS.</p>
+                    </modal-dialog>
+              </a>
+          
+          
+              <!--Angular script for mailing list and about buttons:-->
+              <script>
+                  app = angular.module('ModalDemo', []);
+                  app.directive('modalDialog', function() {
+                    return {
+                      restrict: 'E',
+                      scope: {
+                        show: '='
+                      },
+                      replace: true, // Replace with the template below
+                      transclude: true, // we want to insert custom content inside the directive
+                      link: function(scope, element, attrs) {
+                        scope.dialogStyle = {};
+                        if (attrs.width)
+                          scope.dialogStyle.width = attrs.width;
+                        if (attrs.height)
+                          scope.dialogStyle.height = attrs.height;
+                        scope.hideModal = function() {
+                          scope.show = false;
+                        };
+                      },
+                      template: "<div class='ng-modal' ng-show='show'><div class='ng-modal-overlay' ng-click='hideModal()'></div><div class='ng-modal-dialog' ng-style='dialogStyle'><div class='ng-modal-close' ng-click='hideModal()'>X</div><div class='ng-modal-dialog-content' ng-transclude></div></div></div>"
+                    };
+                  });
+                  app.controller('MyCtrl', ['$scope', function($scope) {
+                    $scope.modalShown = false;
+                    $scope.toggleModal = function() {
+                      $scope.modalShown = !$scope.modalShown;
+                    };
+                  }]);
+              </script>
+          </nav>
+          <span>  AVEVHOX - <span style="font-size: smaller;">The voice eliminator app</span></span>
+        </h1></br></br><!--<img src="quiet.gif" class="cycle"/--></br>
+    </div>
+    <!--End, Header:-->
+
+    </br>
+    <!--for future development-->
+<!--<span><h2>CHOOSE YOUR .WAV FILE:</h2></span></br>
+    
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+      <input type=submit value=Upload></p>
+    </form>
+    </br></br></br></br></br>-->
+    
+    
+    
+    <!--Widgets-->
+        <div class="social-icons">
+
+            <!--Twitter: so simple, works just fine, is utterly perfect.-->
+            <!--<a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Flocalhost%2Fvp%2Findex.html&text=Avevhox&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%2Fvp%2Findex.html" class="twitter" target="_blank" data-hint="25,634+"></a>-->
+            <a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Flocalhost%2Fvp%2Findex.html&text=Check out Avevhox, the voice elimination app!&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%2Fvp%2Findex.html" class="twitter" target="_blank" data-hint="25,634+"></a>
+
+            <!--FB script-->
+            <!--<div id="fb-root"></div>-->
+                <script>(function(d, s, id) {
+                  var js, fjs = d.getElementsByTagName(s)[0];
+                  if (d.getElementById(id)) return;
+                  js = d.createElement(s); js.id = id;
+                  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=418311691605842"; // appId must be valid
+                  fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+                </script>
+            <!--<a href="https://www.facebook.com/sharer/sharer.php?app_id=418311691605842&sdk=joey&u=http%3A%2F%2Fwww.heroku.com&display=popup" class="facebook" target="_blank" data-hint="11,563+"></a>            -->
+            <a href="https://www.facebook.com/sharer/sharer.php?app_id=418311691605842&sdk=joey&u=http%3A%2F%2Fwww.heroku.com&display=popup" class="facebook" target="_blank" data-hint="11,563+"></a>            
+                <script>
+                    !function(d,s,id){
+                        var js,fjs=d.getElementsByTagName(s)[0];
+                        if(!d.getElementById(id)){
+                            js=d.createElement(s);
+                            js.id=id;
+                            js.src="https://platform.twitter.com/widgets.js";
+                            fjs.parentNode.insertBefore(js,fjs);
+                        }
+                    }
+                    (document,"script","twitter-wjs");
+                </script>
+
+            <!--Google Plus-->
+            <!--KEEP, but make dialog box around:-->
+            <!--<a class="googleplus" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.linkedin.com/in/alexhiguera/" target="_blank"></a>-->
+            <a class="googleplus" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.heroku.com" target="_blank"></a>
+            <!-- Google Plus JS:-->
+            <script type="text/javascript">
+              (function() {
+                var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                po.src = 'https://apis.google.com/js/platform.js';
+                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+              })();
+            </script>
+
+            <!--Email:-->
+            <a class="mail" href="mailto:avevhox@gmail.com" target="_blank"><span><img class="mailz" src="static/iconn.png"/></span></a>
+            <!--<a class="mail" href="mailto:avevhox@gmail.com" target="_blank"></a>-->
+        </div>    
+
+
+
+    <!--Footer:-->    
+    <div id="footer"><span style="float: right; padding-right: 50px;">&copy 2014 Avevhox</span></div>
+
+</body>
+  

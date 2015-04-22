@@ -1,0 +1,337 @@
+<!doctype html>
+
+<html xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+    
+    <meta charset="utf=8"/>
+    <!--jQuery-->
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    <!--favicon code-->
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='velim.css') }}" me2dia="screen">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='static/favicon.ico') }}">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">  
+    <title>Avevhox</title>
+
+    <!--Header:-->
+    <div>
+        <h1>
+          <a href="#" onclick="goBack()"><img src="static/trial3black.png" style="height: 110px;"/></a>
+              <script type="text/javascript">
+                  function goBack()
+                    {
+                    window.history.back()
+                    }
+              </script>
+          <nav style="float: right;">
+              <a href="#Contact"><img title="Contact Us" src="static/atsign3.png" class="contact_icon"/></a>                   
+              <a href="#MailingList"><img title="Join our mailing list!" id="opener" src="static/anydo.png" class="mailinglist_icon"/></a>
+                    <script>
+                        $(function() {
+                          $( "#dialog" ).dialog({
+                            height:340,
+                            width:500,
+                            autoOpen: false,
+                            show: {
+                              effect: "blind",
+                              duration: 100,
+                            },
+                            hide: {
+                              effect: "drop",
+                              duration: 100
+                            }
+                          });
+                          $( "#opener" ).click(function() {
+                            $( "#dialog" ).dialog( "open" );
+                            closedialog = 0;
+                          });
+                          //Close dialog by clicking outside:
+                          //http://stackoverflow.com/questions/2554779/jquery-ui-close-dialog-when-clicked-outside                            
+                          var closedialog;
+                          
+                          function overlayclickclose() {
+                              if (closedialog) {
+                                  $('#dialog').dialog('close');
+                              }    
+                              //set to one because click on dialog box sets to zero 
+                              closedialog = 1;
+                          }
+                          
+                          $('#dialog').dialog({
+                                autoOpen: false,
+                                open: function() {
+                                    closedialog = 1;
+                                    $(document).bind('click', overlayclickclose);
+                                },
+                                focus: function() {
+                                    closedialog = 0;
+                                },
+                                close: function() {
+                                    $(document).unbind('click');
+                                },
+                            });
+                        });
+                    </script>                                   
+                    <!-- <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix">
+                      <span id="ui-id-1" class="ui-dialog-title"></span>
+                      <button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close">
+                        <span class="ui-button-icon-primary ui-icon ui-icon-closethick"></span>
+                        <span class="ui-button-text">c</span></button></div>-->
+                    <div id="dialog" title="">
+                      <p>Join our mailing list to receive the latest news from Avevhox, including updates and product releases!</p>                      
+                          <form>
+                              <fieldset>
+                                <label for="name">Name:</label>
+                                <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all"></br></br></br>
+                                <label for="email">Email:</label>
+                                <input type="text" name="email" id="email" value="" class="text ui-widget-content ui-corner-all"></br></br></br>
+                              </fieldset>
+                              <div class="center">  
+                                  <input type="submit" class="flatbtn-blu" value="Send">&nbsp
+                                  <input type="reset" class="flatbtn-blu" value="Clear">
+                              </div>
+                          </form>
+                    </div>
+              <a href="#About"><img title="About Avevhox" src="static/info2.png" id="aboutopener" class="about_icon"/></br></a>
+                    <script>
+                        $(function() {
+                          
+                                function overlayclickclose() {
+                                    if (closedialog) {
+                                        $('#dialog').dialog('close');
+                                    }    
+                                    //set to one because click on dialog box sets to zero 
+                                    closedialog = 1;
+                                }
+                          
+                          if ($("#dialog").dialog( "isOpen" )===true) {
+                            
+                                     
+                          //Close dialog by clicking outside:
+                          //http://stackoverflow.com/questions/2554779/jquery-ui-close-dialog-when-clicked-outside                            
+                                var closedialog;
+                                
+                                //function overlayclickclose() {
+                                //    if (closedialog) {
+                                //        $('#dialog').dialog('close');
+                                //    }    
+                                //    //set to one because click on dialog box sets to zero 
+                                //    closedialog = 1;
+                                //}
+                                
+                                $('#dialog').dialog({
+                                      autoOpen: false,
+                                      open: function() {
+                                          closedialog = 1;
+                                          $(document).bind('click', overlayclickclose);
+                                      },
+                                      focus: function() {
+                                          closedialog = 0;
+                                      },
+                                      close: function() {
+                                          $(document).unbind('click');
+                                      },
+                                  });
+                                      
+                            
+                                  $( "#aboutdialog" ).dialog({
+                                    height:340,
+                                    width:500,
+                                    autoOpen: false,
+                                    show: {
+                                      effect: "blind",
+                                      duration: 100,
+                                    },
+                                    hide: {
+                                      effect: "drop",
+                                      duration: 100
+                                    }
+                                  });
+                                  $( "#aboutopener" ).click(function() {
+                                    $( "#aboutdialog" ).dialog( "open" );
+                                    closedialog = 0;
+                                  });
+                                  
+                                  //Close dialog by clicking outside:
+                                  //http://stackoverflow.com/questions/2554779/jquery-ui-close-dialog-when-clicked-outside                            
+                                  var closedialog;
+                                  
+                                  //function overlayclickclose() {
+                                  //    if (closedialog) {
+                                  //        $('#aboutdialog').dialog('close');
+                                  //    }    
+                                  //    //set to one because click on dialog box sets to zero 
+                                  //    closedialog = 1;
+                                  //}
+                                  //
+                                  $('#aboutdialog').dialog({
+                                      autoOpen: false,
+                                      open: function() {
+                                          closedialog = 1;
+                                          $(document).bind('click', overlayclickclose);
+                                      },
+                                      focus: function() {
+                                          closedialog = 0;
+                                      },
+                                      close: function() {
+                                          $(document).unbind('click');
+                                      },
+                                  });
+                            
+                            
+                            //true
+                          } else {
+                            
+                                      $( "#aboutdialog" ).dialog({
+                                        height:340,
+                                        width:500,
+                                        autoOpen: false,
+                                        show: {
+                                          effect: "blind",
+                                          duration: 100,
+                                        },
+                                        hide: {
+                                          effect: "drop",
+                                          duration: 100
+                                        }
+                                      });
+                                      $( "#aboutopener" ).click(function() {
+                                        $( "#aboutdialog" ).dialog( "open" );
+                                        closedialog = 0;
+                                      });
+                                      
+                                      //Close dialog by clicking outside:
+                                      //http://stackoverflow.com/questions/2554779/jquery-ui-close-dialog-when-clicked-outside                            
+                                      var closedialog;
+                                      
+                                      function overlayclickclose() {
+                                          if (closedialog) {
+                                              $('#aboutdialog').dialog('close');
+                                          }    
+                                          //set to one because click on dialog box sets to zero 
+                                          closedialog = 1;
+                                      }
+                                      
+                                      $('#aboutdialog').dialog({
+                                          autoOpen: false,
+                                          open: function() {
+                                              closedialog = 1;
+                                              $(document).bind('click', overlayclickclose);
+                                          },
+                                          focus: function() {
+                                              closedialog = 0;
+                                          },
+                                          close: function() {
+                                              $(document).unbind('click');
+                                          },
+                                      });
+                            
+                            
+                              //false
+                          }
+                        });
+                    </script>  
+                 <div id="aboutdialog" title=""></div>
+            </nav>
+
+          <span>  AVEVHOX - <span style="font-size: smaller;">The voice eliminator app</span></span>
+        </h1></br></br><!--<img src="quiet.gif" class="cycle"/--></br>
+    </div>
+    
+</head>
+
+<body>
+  
+
+
+    </br>
+    <!--for future development-->
+<!--    <span><h2>CHOOSE YOUR .WAV FILE:</h2></span></br>
+    
+    <form action="" method=post enctype=multipart/form-data>
+      <p><input type=file name=file>
+      <input type=submit value=Upload></p>
+    </form>
+    </br></br></br></br></br>-->
+    
+    
+  <!--Widgets-->
+
+    <!--FB script-->
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=418311691605842"; // appId must be valid
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <div class="social-icons">
+        
+        <!--Twitter: so simple, works just fine, is utterly perfect.-->
+        <!--<a href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Flocalhost%2Fvp%2Findex.html&text=Avevhox&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%2Fvp%2Findex.html" class="twitter" target="_blank" data-hint="25,634+"></a>-->
+        <tzine href="https://twitter.com/intent/tweet?original_referer=http%3A%2F%2Flocalhost%2Fvp%2Findex.html&text=Avevhox&tw_p=tweetbutton&url=http%3A%2F%2Flocalhost%2Fvp%2Findex.html" class="twitter" target="_blank" data-hint="25,634+"></tzine>
+        
+        <!--FB: bane of my existence-->
+        <!--<a href="https://www.facebook.com/sharer/sharer.php?app_id=418311691605842&sdk=joey&u=http%3A%2F%2Fwww.heroku.com&display=popup" class="facebook" target="_blank" data-hint="11,563+"></a>            -->
+        <tzine href="https://www.facebook.com/sharer/sharer.php?app_id=418311691605842&sdk=joey&u=http%3A%2F%2Fwww.heroku.com&display=popup" class="facebook" target="_blank" data-hint="11,563+"></tzine>            
+        <script>
+            !function(d,s,id){
+                var js,fjs=d.getElementsByTagName(s)[0];
+                if(!d.getElementById(id)){
+                    js=d.createElement(s);
+                    js.id=id;
+                    js.src="https://platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js,fjs);
+                }
+            }
+            (document,"script","twitter-wjs");
+        </script>
+    
+        <!--Google Plus-->
+        <!--KEEP, but make dialog box around:-->
+        <!--<a class="googleplus" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.linkedin.com/in/alexhiguera/" target="_blank"></a>-->
+        <tzine class="googleplus" href="https://plus.google.com/share?url=http%3A%2F%2Fwww.linkedin.com/in/alexhiguera/" target="_blank"></tzine>
+        <!-- Google Plus JS:-->
+        <script type="text/javascript">
+          (function() {
+            var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+            po.src = 'https://apis.google.com/js/platform.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+          })();
+        </script>
+        
+        <!--Email:-->
+        <a class="mail" href="mailto:avevhox@gmail.com" target="_blank"><span><img class="mailz" src="static/iconn.png"/></span></a>
+        <!--<a class="mail" href="mailto:avevhox@gmail.com" target="_blank"></a>-->
+    </div>    
+  
+<!--    <div class=page>
+      <h1>Flaskr</h1>
+      <div class=metanav>
+      {% if not session.logged_in %}
+        <a href="{{ url_for('login') }}">log in</a>
+      {% else %}
+        <a href="{{ url_for('logout') }}">log out</a>
+      {% endif %}
+      </div>
+      {% for message in get_flashed_messages() %}
+        <div class=flash>{{ message }}</div>
+      {% endfor %}
+      {% block body %}{% endblock %}
+    </div>-->
+
+    <!--Footer:-->
+<!--    <div id="wrap">
+        <div id="main"></div>
+    </div>-->
+    
+    <div id="footer"><span style="float: right; padding-right: 50px;">&copy 2014 Avevhox</span></div>
+    
+    
+</body>
+  

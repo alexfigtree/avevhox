@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    
+    <meta charset="utf=8"/>
+    <!--Angular-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.js"></script>
+    <!--jQuery-->
+    <script src="//code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    
+    <!--favicon code-->
+    <!--<link rel="stylesheet" href="{{ url_for('static', filename='velim.css') }}"/>-->
+<!--    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='velim.css') }}" me2dia="screen">-->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+<!--    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">  -->
+    
+    <title>Thanks!</title>
+    <style>
+        body {
+/*            background-color:black;
+            color: white;
+            border: double;
+            border-color: red;
+            font-family: "Lucida Console", Monaco, monospace;*/
+              /* A dark translucent div that covers the whole screen */
+            position:absolute;
+            z-index:9999;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background-color:#000000;
+            opacity: 0.8;
+          }
+            
+        
+        dialog{
+            z-index:10000;
+            position: absolute;
+            width: 40%; /* Default */
+            height: 50%;
+            /* Center the dialog */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+          
+            background-color: black;
+            box-shadow: 4px 4px 80px #000;
+           
+           /*added by alex:*/
+              color: white;
+              font-family: Monaco, monospace;
+              padding: 10px;
+              border:4px solid;
+              border-color: rgb(221,71,57);
+              border-radius:25px;
+              text-align: center;
+          }
+/*            width='500px';
+            height='60%';
+        }*/
+        p {
+            text-align: center;
+            font-size: medium;
+            padding: 0px 0px 0px 0px;
+            }
+        button{
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            display: inline-block;
+            outline: 0;
+            border: 0;
+            color: #f3faef;
+            text-decoration: none;
+            background-color: rgb(221,71,57);
+            border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+            font-size: 1.2em;
+            font-weight: bold;
+            padding: 12px 22px 12px 22px;
+            line-height: normal;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            text-transform: uppercase;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.3);
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            -webkit-box-shadow: 0 1px 0 rgba(15, 15, 15, 0.3);
+            -moz-box-shadow: 0 1px 0 rgba(15, 15, 15, 0.3);
+            box-shadow: 0 1px 0 rgba(15, 15, 15, 0.3);
+        
+        }
+        button:hover {
+            color: #fff;
+            background-color: red;
+        }
+    </style>
+    
+    <script>
+        function goBack()
+          {
+          window.history.back()
+          }
+    </script>
+</head>
+
+<body>
+        <dialog>
+            </br>
+            <p><h1>Thanks!!</h1></p>
+            <p style="padding-top: 20px;">You'll hear from us soon.</p></br>
+            
+<!--            <form action="{{ url_for('add_entry') }}" method=post class=add-entry>
+               <fieldset>
+                    <label for="name">Name:</label>
+                    <input type="text" size=30 name="name" id="name" class="text ui-widget-content ui-corner-all"></br></br></br>
+                    
+                    <label for="email">Email:</label>
+                    <input type="text" size=30 name="email" id="email" value="" class="text ui-widget-content ui-corner-all"></br></br></br>
+               </fieldset>
+               <div class="center">  
+               <input type="submit" class="flatbtn-blu" value="Send">&nbsp
+               <input type="reset" class="flatbtn-blu" value="Clear">
+               </div>
+          </form>-->
+          <button onclick="goBack()">Back to Avevhox.com</button>
+          </br></br></br></br>
+        </dialog>
+
+
+</body>
+</html>
